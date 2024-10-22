@@ -4,14 +4,17 @@ import cloudinary
 from cloudinary import CloudinaryImage
 import cloudinary.uploader
 import cloudinary.api
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 cloudinary.config(
-    cloud_name=st.secrets["CLOUDINARY_CLOUD_NAME"],
-    api_key=st.secrets["CLOUDINARY_API_KEY"],
-    api_secret=st.secrets["CLOUDINARY_API_SECRET"],
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.getenv('CLOUDINARY_API_KEY'),
+    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
     secure=True
 )
-
 MAX_FILE_SIZE_MB = 5
 MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024
 
@@ -43,7 +46,7 @@ if selected == "Spooky Pet Background Generator":
 
     uploaded_file = st.file_uploader("Upload an image (jpg, jpeg, png)", type=["jpg", "jpeg", "png"])
 
-    default_prompt = "A dark foggy Halloween night with a full moon in the sky surrounded by eerie twisted trees. Scattered glowing pumpkins with carved faces placed around an old broken fence. In the background, a shadowy haunted house with dimly lit windows stands on a hill with bats flying across the moon. The ground covered with fallen leaves and light mist."
+    default_prompt = "A dark foggy Halloween night with a full moon in the sky surrounded by eerie twisted trees Scattered glowing pumpkins with carved faces placed around an old broken fence in the background a shadowy haunted house with dimly lit windows stands on a hill with bats flying across the moon"
 
     modify_prompt = st.checkbox("Do you want to modify the generative Halloween background prompt?", value=False)
 
@@ -59,11 +62,12 @@ if selected == "Spooky Pet Background Generator":
                 st.warning(f"File size exceeds the 5 MB limit. Please upload a smaller file.")
             else:
                 st.write("Generating image... Please have patience while the image is being processed by Cloudinary.")
-                upload_result = cloudinary.uploader.upload(uploaded_file, public_id=f"user_uploaded_{uploaded_file.name.replace('.jpg', '')}", unique_filename=True, overwrite=False)
+                upload_result = cloudinary.uploader.upload(uploaded_file, public_id=f"user_uploaded_{uploaded_file.name}", unique_filename=True, overwrite=False)
                 public_id = upload_result['public_id']
                 halloween_bg_image_url = CloudinaryImage(public_id).image(
                     effect=f"gen_background_replace:prompt_{custom_prompt}"
                 )
+                print(halloween_bg_image_url)
                 start_index = halloween_bg_image_url.find('src="') + len('src="')
                 end_index = halloween_bg_image_url.find('"', start_index)
                 image_url = halloween_bg_image_url[start_index:end_index] if start_index != -1 and end_index != -1 else None
@@ -79,7 +83,7 @@ if selected == "Spooky Cat Face Transformer":
 
     uploaded_cat_pic = st.file_uploader("Upload a cat image to give it a spooky transformation! (jpg, jpeg, png)", type=["jpg", "jpeg", "png"])
 
-    default_cat_prompt = "A demonic cat with glowing red eyes, sharp fangs, bat wings, and dark mist swirling around it under a blood moon."
+    default_cat_prompt = "A demonic cat with glowing red eyes sharp fangs and dark mist swirling around it under a blood moon"
 
     modify_cat_prompt = st.checkbox("Do you want to modify the spooky cat transformation prompt?", value=False)
 
