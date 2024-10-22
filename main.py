@@ -45,7 +45,7 @@ if selected == "Spooky Pet Background Generator":
 
     uploaded_file = st.file_uploader("Upload an image (jpg, jpeg, png)", type=["jpg", "jpeg", "png"])
 
-    default_prompt = "A dark foggy Halloween night with a full moon in the sky surrounded by eerie twisted trees Scattered glowing pumpkins with carved faces placed around an old broken fence in the background a shadowy haunted house with dimly lit windows stands on a hill with bats flying across the moon"
+    default_prompt = "A dark foggy Halloween night with a full moon in the sky surrounded by twisted trees Scattered glowing pumpkins with carved faces placed around an old broken fence in the background a shadowy haunted house with dimly lit windows"
 
     modify_prompt = st.checkbox("Do you want to modify the generative Halloween background prompt?", value=False)
 
