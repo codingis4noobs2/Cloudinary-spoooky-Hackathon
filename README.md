@@ -2,6 +2,13 @@
 
 **Spooky Pet Image App** is a fun platform that transforms ordinary pet images into spooky, Halloween-themed creations. Whether you're looking to give your cat a spooky makeover or place any pet in a chilling Halloween setting, this app has everything you need for a spooky transformation!
 
+## Example Image Generated
+### Original
+![alexander-london-mJaD10XeD7w-unsplash](https://github.com/user-attachments/assets/98afa889-364a-4337-98ff-347f2a3a94e2)
+
+### Transformed
+![user_uploaded_alexander-london-mJaD10XeD7w-unsplash-min](https://github.com/user-attachments/assets/e3e1dde3-4252-499b-80a5-4b67942b2751)
+
 ## Features
 
 - **Spooky Pet Background Generator**: Upload any pet image and replace the background with a foggy, eerie Halloween scene featuring twisted trees, pumpkins, a haunted house, and more.
