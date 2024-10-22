@@ -61,7 +61,12 @@ if selected == "Spooky Pet Background Generator":
                 st.warning(f"File size exceeds the 5 MB limit. Please upload a smaller file.")
             else:
                 st.write("Generating image... Please have patience while the image is being processed by Cloudinary.")
-                upload_result = cloudinary.uploader.upload(uploaded_file, public_id=f"user_uploaded_{uploaded_file.name}", unique_filename=True, overwrite=False)
+                upload_result = cloudinary.uploader.upload(
+                    uploaded_file, 
+                    public_id=f"user_uploaded_{uploaded_file.name.replace('.jpg', '')", 
+                    unique_filename=True, 
+                    overwrite=False
+                )
                 public_id = upload_result['public_id']
                 halloween_bg_image_url = CloudinaryImage(public_id).image(
                     effect=f"gen_background_replace:prompt_{custom_prompt}"
