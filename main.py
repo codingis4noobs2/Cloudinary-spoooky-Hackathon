@@ -27,7 +27,7 @@ with st.sidebar:
 if selected == "Home":
     st.title("Welcome to the Spooky Pet Image App! ~Powered by Cloudinary")
     
-    st.write("""
+    st.write(""" 
     **Spooky Pet Image App** is a fun and creative platform that transforms ordinary pet images into spooky, Halloween-themed masterpieces. 
     Whether you're looking to give your cat a spooky makeover or place your pet in a chilling Halloween setting, this app has you covered!
 
@@ -36,6 +36,8 @@ if selected == "Home":
     - **Spooky Cat Face Transformer**: Specifically designed for cats, this feature transforms your cat into a demonic version with glowing red eyes, sharp fangs, bat wings, and dark mist under a blood moon. You can also modify the transformation prompt for a more personalized spooky effect.
     
     This app leverages Cloudinary's powerful Generative AI features to make your pets look extra spooky this Halloween. Try it out, and share the spooky transformations with your friends!
+
+    If you don't see the image, just refresh the page and try again. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)
     """)
 
 if selected == "Spooky Pet Background Generator":
@@ -74,6 +76,8 @@ if selected == "Spooky Pet Background Generator":
                     st.write("Failed to apply the background. Please try again.")
         else:
             st.write("Please upload an image to proceed.")
+
+    st.write("If you don't see the image, just refresh the page and try again. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
 
 if selected == "Spooky Cat Face Transformer":
     st.title("Spooky Cat Face Transformer")
@@ -115,3 +119,5 @@ if selected == "Spooky Cat Face Transformer":
                     st.write("Failed to generate the spooky transformation. Please try again.")
         else:
             st.write("Please upload an image to proceed.")
+
+    st.write("If you don't see the image, just refresh the page and try again. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
