@@ -63,7 +63,7 @@ if selected == "Spooky Pet Background Generator":
                 st.write("Generating image... Please have patience while the image is being processed by Cloudinary.")
                 upload_result = cloudinary.uploader.upload(
                     uploaded_file, 
-                    public_id=f"user_uploaded_{uploaded_file.name.replace('.jpg', '')"}, 
+                    public_id=f"user_uploaded_{uploaded_file.name.replace('.jpg', '')}", 
                     unique_filename=True, 
                     overwrite=False
                 )
