@@ -77,7 +77,7 @@ if selected == "Spooky Pet Background Generator":
         else:
             st.write("Please upload an image to proceed.")
 
-    st.write("If you don't see the image, just refresh the page and try again. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
+    st.write("If you don't see the image, just refresh the page and try again, Sometimes it just ignores the Image, So try with a low-resolution Image. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
 
 if selected == "Spooky Cat Face Transformer":
     st.title("Spooky Cat Face Transformer")
@@ -120,4 +120,4 @@ if selected == "Spooky Cat Face Transformer":
         else:
             st.write("Please upload an image to proceed.")
 
-    st.write("If you don't see the image, just refresh the page and try again. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
+    st.write("If you don't see the image, just refresh the page and try again, Sometimes it just ignores the Image, So try with a low-resolution Image. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
