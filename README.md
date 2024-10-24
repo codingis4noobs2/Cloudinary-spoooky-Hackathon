@@ -46,7 +46,7 @@
 
 4. **Run the app**:
    ```bash
-   streamlit run app.py
+   streamlit run main.py
    ```
 
 5. **Open the app**:
