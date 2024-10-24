@@ -36,8 +36,6 @@ if selected == "Home":
     - **Spooky Cat Face Transformer**: Specifically designed for cats, this feature transforms your cat into a demonic version with glowing red eyes, sharp fangs, bat wings, and dark mist under a blood moon. You can also modify the transformation prompt for a more personalized spooky effect.
     
     This app leverages Cloudinary's powerful Generative AI features to make your pets look extra spooky this Halloween. Try it out, and share the spooky transformations with your friends!
-
-    If you don't see the image, just refresh the page and try again. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)
     """)
 
 if selected == "Spooky Pet Background Generator":
@@ -60,10 +58,12 @@ if selected == "Spooky Pet Background Generator":
             if uploaded_file.size > MAX_FILE_SIZE_BYTES:
                 st.warning(f"File size exceeds the 5 MB limit. Please upload a smaller file.")
             else:
-                st.write("Generating image... Please have patience while the image is being processed by Cloudinary.")
+                message_placeholder = st.empty()
+                message_placeholder.write("Generating image... Please have patience while the image is being processed by Cloudinary.")
+                
                 upload_result = cloudinary.uploader.upload(
                     uploaded_file, 
-                    public_id=f"user_uploaded_{uploaded_file.name.replace('.jpg', '')}", 
+                    public_id=f"user_uploaded_{uploaded_file.name[:6]}", 
                     unique_filename=True, 
                     overwrite=False
                 )
@@ -71,18 +71,20 @@ if selected == "Spooky Pet Background Generator":
                 halloween_bg_image_url = CloudinaryImage(public_id).image(
                     effect=f"gen_background_replace:prompt_{custom_prompt}"
                 )
-                print(halloween_bg_image_url)
+                
                 start_index = halloween_bg_image_url.find('src="') + len('src="')
                 end_index = halloween_bg_image_url.find('"', start_index)
                 image_url = halloween_bg_image_url[start_index:end_index] if start_index != -1 and end_index != -1 else None
+                
                 if image_url:
-                    st.image(image_url, caption="Your image with a spooky Halloween background!")
+                    message_placeholder.empty()
+                    st.image(image_url)
                 else:
-                    st.write("Failed to apply the background. Please try again.")
+                    message_placeholder.write("Failed to apply the background. Please try again.")
         else:
             st.write("Please upload an image to proceed.")
 
-    st.write("If you don't see the image, just refresh the page and try again, Sometimes it just ignores the Image, So try with a low-resolution Image. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
+    st.write("If you don't see the image, just refresh the page and try again. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
 
 if selected == "Spooky Cat Face Transformer":
     st.title("Spooky Cat Face Transformer")
@@ -104,10 +106,12 @@ if selected == "Spooky Cat Face Transformer":
             if uploaded_cat_pic.size > MAX_FILE_SIZE_BYTES:
                 st.warning(f"File size exceeds the 5 MB limit. Please upload a smaller file.")
             else:
-                st.write("Generating your cat's spooky transformation... Please wait while Cloudinary processes the image.")
+                message_placeholder = st.empty()
+                message_placeholder.write("Generating your cat's spooky transformation... Please wait while Cloudinary processes the image.")
+                
                 upload_result = cloudinary.uploader.upload(
                     uploaded_cat_pic, 
-                    public_id=f"user_spooky_cat_{uploaded_cat_pic.name.replace('.jpg', '')}", 
+                    public_id=f"user_spooky_cat_{uploaded_cat_pic.name[:6]}", 
                     unique_filename=True, 
                     overwrite=False
                 )
@@ -115,14 +119,17 @@ if selected == "Spooky Cat Face Transformer":
                 spooky_image_url = CloudinaryImage(public_id).image(
                     effect=f"gen_replace:from_cat;to_{custom_cat_prompt}"
                 )
+                
                 start_index = spooky_image_url.find('src="') + len('src="')
                 end_index = spooky_image_url.find('"', start_index)
                 image_url = spooky_image_url[start_index:end_index] if start_index != -1 and end_index != -1 else None
+                
                 if image_url:
-                    st.image(image_url, caption="Here is your spooky cat transformation!")
+                    message_placeholder.empty()
+                    st.image(image_url)
                 else:
-                    st.write("Failed to generate the spooky transformation. Please try again.")
+                    message_placeholder.write("Failed to generate the spooky transformation. Please try again.")
         else:
             st.write("Please upload an image to proceed.")
 
-    st.write("If you don't see the image, just refresh the page and try again, Sometimes it just ignores the Image, So try with a low-resolution Image. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
+    st.write("If you don't see the image, just refresh the page and try again. You can also use this test image: [Test Image](https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk)")
